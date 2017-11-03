@@ -21,6 +21,7 @@ app_name = sys.argv[2]
 ''' Option runtime hook '''
 function_name = None
 xor_key = None
+frida_script = '/mnt/hgfs/frida/frida-dida/graziano/frida-hook.js'
 
 if len(sys.argv) >= 4:
     function_name = sys.argv[3]
@@ -49,7 +50,7 @@ else:
 
 print('Looking for function {}'.format(function_name))
 
-with open('/mnt/hgfs/frida/frida-hook.js', 'r') as js_file:
+with open(frida_script, 'r') as js_file:
     js_script = js_file.read() % function_name
 
 
