@@ -4,7 +4,7 @@ Uses frida.re to hook binary function calls dynamically.
 
 Either enter xor key to try or allow frida script to bruteforce.
 
-e.g. scramble is binary's label to identify xor function and 32 is xor key to try.
+e.g. scramble is the name of the binary's xor function and 32 is xor key to try.
 $ python /mnt/hgfs/frida/rpc-brute.py spawn /mnt/hgfs/frida/m scramble 32
 or
 $ python /mnt/hgfs/frida/rpc-brute.py spawn /mnt/hgfs/frida/m scramble
