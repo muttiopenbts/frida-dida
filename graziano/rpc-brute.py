@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 '''
 Guess xor challenge binary called m.
 Uses frida.re to hook binary function calls dynamically.
@@ -9,19 +10,27 @@ $ python /mnt/hgfs/frida/rpc-brute.py spawn /mnt/hgfs/frida/m scramble 32
 or
 $ python /mnt/hgfs/frida/rpc-brute.py spawn /mnt/hgfs/frida/m scramble
 
+Tested with Frida 12.x
 '''
 from __future__ import print_function
 import frida
 import sys
 import time
+import os
 
+script_directory = os.path.dirname(os.path.realpath(__file__))
+
+''' Quick reminder on how to run the bloody script '''
+if len(sys.argv) < 2:
+    print("Trying something like this, \n$ python rpc-brute.py spawn <binary> <hooked function>")
+    sys.exit()
 
 run_mode = sys.argv[1]
 app_name = sys.argv[2]
 ''' Option runtime hook '''
 function_name = None
 xor_key = None
-frida_script = '/mnt/hgfs/frida/frida-dida/graziano/frida-hook.js'
+frida_script = script_directory + '/frida-hook.js'
 
 if len(sys.argv) >= 4:
     function_name = sys.argv[3]
